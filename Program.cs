@@ -1,1 +1,3 @@
 ﻿using RPGGame;
+
+Game.Start();

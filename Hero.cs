@@ -18,5 +18,26 @@ namespace RPGGame
         private Armour _equippedArmour;
         #endregion;
 
+        #region Methods
+        private void _setUpHeroName(string heroName)
+        {
+            if(heroName.Length < 2)
+            {
+                throw new Exception("\nI apologize but legends say that your name was at least 2 characters long.");
+            } else if (!heroName.All(c => char.IsLetterOrDigit(c)))
+            {
+                throw new Exception("\nI apologize but legends say that your name was said to only contain letters and/or numbers.");
+            }
+
+            _name = heroName;
+        }
+        #endregion
+
+        #region Constructor
+        public Hero(string heroName)
+        {
+            _setUpHeroName(heroName);
+        }
+        #endregion
     }
 }
