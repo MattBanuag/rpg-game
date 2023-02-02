@@ -24,7 +24,7 @@ namespace RPGGame
         private void _formatHeroName(string heroName)
         {
             heroName.ToCharArray();
-            char firstLetter = heroName[0];
+            char firstLetter = char.ToUpper(heroName[0]);
             string restOfName = heroName.Substring(1);
             string formattedName = $"{firstLetter}{restOfName}";
 
