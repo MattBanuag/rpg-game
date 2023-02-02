@@ -8,6 +8,9 @@ namespace OOPFundamentalsFinalProject
 {
     public class Weapon
     {
-
+        #region Fields and Properties
+        private string _name;
+        private int _power;
+        #endregion  
     }
 }
