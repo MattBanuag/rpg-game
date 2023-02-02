@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGGame
 {
-    public class Weapon
+    public static class Game
     {
-        #region Fields and Properties
-        private string _name;
-        private int _power;
-        #endregion  
     }
 }
