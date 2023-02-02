@@ -29,7 +29,7 @@ namespace RPGGame
                 throw new Exception("\nI apologize but legends say that your name was said to only contain letters and/or numbers.");
             }
 
-            _name = heroName;
+            _name = heroName.ToUpper();
         }
         #endregion
 
