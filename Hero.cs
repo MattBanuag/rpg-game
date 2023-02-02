@@ -10,6 +10,8 @@ namespace RPGGame
     {
         #region Fields and Properties
         private string _name;
+        public string Name { get { return _name; } }
+
         private int _baseStrength;
         private int _baseDefence;
         private int originalHealth;
@@ -19,6 +21,15 @@ namespace RPGGame
         #endregion;
 
         #region Methods
+        private void _formatHeroName(string heroName)
+        {
+            heroName.ToCharArray();
+            char firstLetter = heroName[0];
+            string restOfName = heroName.Substring(1);
+            string formattedName = $"{firstLetter}{restOfName}";
+
+            _name = formattedName;
+        }
         private void _setUpHeroName(string heroName)
         {
             if(heroName.Length < 2)
@@ -29,7 +40,7 @@ namespace RPGGame
                 throw new Exception("\nI apologize but legends say that your name was said to only contain letters and/or numbers.");
             }
 
-            _name = heroName.ToUpper();
+            _formatHeroName(heroName);
         }
         #endregion
 

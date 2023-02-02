@@ -30,7 +30,7 @@ namespace RPGGame
                     newHero = new Hero(heroName);
 
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"\nI see.... Greetings {heroName}!");
+                    Console.WriteLine($"\nI see.... Greetings {newHero.Name}!");
                     isValid = true;
                 }
                 catch (Exception ex)
