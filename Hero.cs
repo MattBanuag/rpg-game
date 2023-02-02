@@ -8,6 +8,7 @@ namespace RPGGame
 {
     public class Hero
     {
+        #region Fields and Properties
         private string _name;
         private int _baseStrength;
         private int _baseDefence;
@@ -15,5 +16,7 @@ namespace RPGGame
         private int _currentHealth;
         private Weapon _equippedWeapon;
         private Armour _equippedArmour;
+        #endregion;
+
     }
 }
