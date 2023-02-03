@@ -14,6 +14,7 @@ namespace RPGGame
         public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
         public static HashSet<Armour> Armours = new HashSet<Armour>();
         private static Hero _newHero;
+        private static Monster _randomMonster;
         private static Random _random = new Random();
         #endregion
 
@@ -145,16 +146,16 @@ namespace RPGGame
                 Console.WriteLine($"May you strike down your foe mightily and true.");
 
                 int index = MonsterRandomizer();
-                Monster randomMonster = Monsters.ElementAt(index);
+                _randomMonster = Monsters.ElementAt(index);
 
                 Console.WriteLine("\n\"WALKING THROUGH THE DARK FOREST OF HAVENBORNE........\"");
-                Console.WriteLine($"\"{randomMonster.Name} APPEARS!\"");
+                Console.WriteLine($"\"{_randomMonster.Name} APPEARS!\"");
                 Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine($"\n{randomMonster.Name}'s Stats");
+                Console.WriteLine($"\n{_randomMonster.Name}'s Stats");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Health = {randomMonster.OriginalHealth}");
-                Console.WriteLine($"Strength = {randomMonster.Strength}");
-                Console.WriteLine($"Defense = {randomMonster.Defense}");
+                Console.WriteLine($"Health = {_randomMonster.OriginalHealth}");
+                Console.WriteLine($"Strength = {_randomMonster.Strength}");
+                Console.WriteLine($"Defense = {_randomMonster.Defense}");
                 
                 Console.WriteLine("\nOptions: ");
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -176,7 +177,7 @@ namespace RPGGame
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine($"This option is not available. {randomMonster.Name} smells your hesitation...");
+                        Console.WriteLine($"This option is not available. {_randomMonster.Name} smells your hesitation...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write($"\n~ What shall you do? ");
                         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -187,7 +188,7 @@ namespace RPGGame
                 switch (userChoice)
                 {
                     case "1":
-                        Console.WriteLine("The fight is on!!!");
+                        FightMonster();
                         break;
                     case "2":
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -199,6 +200,20 @@ namespace RPGGame
                 }
 
             }
+        }
+        public static void FightMonster()
+        {
+            bool heroTurn = _random.Next(2) == 1;
+            bool isFighting = true;
+
+            if (heroTurn)
+            {
+                Console.WriteLine("Hero Turn");
+            } else
+            {
+                Console.WriteLine("Monster Turn");
+            }
+
         }
         public static void DisplayAvailableItems()
         {

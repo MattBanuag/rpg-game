@@ -22,7 +22,7 @@ namespace RPGGame
         public int OriginalHealth { get { return _originalHealth; } }
 
         private int _currentHealth;
-        public int CurrentHealth { get { return _currentHealth; } }
+        public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
         #endregion
 
         #region Constructor

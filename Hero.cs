@@ -16,6 +16,8 @@ namespace RPGGame
         private int _baseDefence = 30;
         private int originalHealth = 300;
         private int _currentHealth;
+        public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
+
         private Weapon? _equippedWeapon;
         public Weapon? EquippedWeapon { get { return _equippedWeapon; } }
 

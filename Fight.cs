@@ -11,8 +11,8 @@ namespace RPGGame
         #region Fields and Properties
         private int _heroTurn;
         private int _monsterTurn;
-        private bool _win;
-        private bool _lose;
+        private int _win;
+        private int _lose;
         #endregion  
     }
 }
