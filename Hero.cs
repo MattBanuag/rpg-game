@@ -16,11 +16,11 @@ namespace RPGGame
         private int _baseDefence = 30;
         private int originalHealth = 300;
         private int _currentHealth;
-        private Weapon _equippedWeapon;
-        public Weapon EquippedWeapon { get { return _equippedWeapon; } }
+        private Weapon? _equippedWeapon;
+        public Weapon? EquippedWeapon { get { return _equippedWeapon; } }
 
-        private Armour _equippedArmour;
-        public Armour EquippedArmour { get { return _equippedArmour; } }
+        private Armour? _equippedArmour;
+        public Armour? EquippedArmour { get { return _equippedArmour; } }
         #endregion;
 
         #region Methods
@@ -47,11 +47,20 @@ namespace RPGGame
         }
         public void GetInventory()
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"\n{Name}'s Inventory: ");
-            Console.WriteLine($"Weapon: {EquippedWeapon.Name} - {EquippedWeapon.Power} POWER");
-            Console.WriteLine($"Armour: {EquippedArmour.Name} - {EquippedArmour.Power} POWER\n");
-            Console.WriteLine("Feeling prepared? ");
+            if (EquippedWeapon == null || EquippedArmour == null)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("You have no weapon and/or armour equipped.\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Don't forget to prepare yourself for the battle ahead.");
+            } else
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine($"\n{Name}'s Inventory: ");
+                Console.WriteLine($"Weapon: {EquippedWeapon.Name} - {EquippedWeapon.Power} POWER");
+                Console.WriteLine($"Armour: {EquippedArmour.Name} - {EquippedArmour.Power} POWER\n");
+                Console.WriteLine("Feeling prepared? ");
+            }
         }
         public void EquipWeapon(Weapon weaponChoice)
         {
