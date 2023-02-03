@@ -12,9 +12,9 @@ namespace RPGGame
         private string _name;
         public string Name { get { return _name; } }
 
-        private int _baseStrength;
-        private int _baseDefence;
-        private int originalHealth;
+        private int _baseStrength = 30;
+        private int _baseDefence = 30;
+        private int originalHealth = 300;
         private int _currentHealth;
         private Weapon _equippedWeapon;
         private Armour _equippedArmour;
