@@ -10,10 +10,19 @@ namespace RPGGame
     {
         #region Fields and Properties
         private string _name;
+        public string Name { get { return _name; } }
+
         private int _strength;
+        public int Strength { get { return _strength; } }
+
         private int _defense;
+        public int Defense { get { return _defense; } }
+
         private int _originalHealth;
+        public int OriginalHealth { get { return _originalHealth; } }
+
         private int _currentHealth;
+        public int CurrentHealth { get { return _currentHealth; } }
         #endregion
 
         #region Constructor

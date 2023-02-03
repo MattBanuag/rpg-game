@@ -55,8 +55,9 @@ namespace RPGGame
                 Console.WriteLine("Don't forget to prepare yourself for the battle ahead.");
             } else
             {
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"\n{Name}'s Inventory: ");
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"Weapon: {EquippedWeapon.Name} - {EquippedWeapon.Power} POWER");
                 Console.WriteLine($"Armour: {EquippedArmour.Name} - {EquippedArmour.Power} POWER\n");
                 Console.WriteLine("Feeling prepared? ");
