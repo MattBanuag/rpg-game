@@ -9,6 +9,11 @@ namespace RPGGame
 {
     public static class Game
     {
+        #region Data Collections
+        public static HashSet<Monster> Monsters = new HashSet<Monster>();   
+
+        #endregion
+
         #region Methods
         public static void SummonMonsters()
         {
@@ -17,6 +22,12 @@ namespace RPGGame
             Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 240, 600);
             Monster Serpent = new Monster("Clement the Serpent", 400, 320, 800);
             Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 1500);
+
+            Monsters.Add(Goblin);
+            Monsters.Add(Orc);
+            Monsters.Add(Gargoyle);
+            Monsters.Add(Serpent);
+            Monsters.Add(Dragon);
         }
         public static void PlayIntroduction()
         {
