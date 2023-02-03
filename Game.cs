@@ -10,6 +10,14 @@ namespace RPGGame
     public static class Game
     {
         #region Methods
+        public static void SummonMonsters()
+        {
+            Monster Goblin = new Monster("Robin the Goblin", 100, 80, 200);
+            Monster Orc = new Monster("Rourke the Orc", 200, 160, 400);
+            Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 240, 600);
+            Monster Serpent = new Monster("Clement the Serpent", 400, 320, 800);
+            Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 1500);
+        }
         public static void PlayIntroduction()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -90,9 +98,11 @@ namespace RPGGame
         public static void Start()
         {
             bool gameStart = true;
+            SummonMonsters();
             PlayIntroduction();
             GetHeroName();
             ShowMainMenu();
+
         }
         #endregion
     }
