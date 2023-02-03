@@ -11,11 +11,12 @@ namespace RPGGame
     {
         #region Data Collections
         public static HashSet<Monster> Monsters = new HashSet<Monster>();   
-
+        public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
+  
         #endregion
 
         #region Methods
-        public static void SummonMonsters()
+        public static void SpawnMonsters()
         {
             Monster Goblin = new Monster("Robin the Goblin", 100, 80, 200);
             Monster Orc = new Monster("Rourke the Orc", 200, 160, 400);
@@ -28,6 +29,14 @@ namespace RPGGame
             Monsters.Add(Gargoyle);
             Monsters.Add(Serpent);
             Monsters.Add(Dragon);
+        }
+        public static void SpawnWeapons()
+        {
+            Weapon Sword = new Weapon("Sword", 50);
+            Weapon Spear = new Weapon("Spear", 150);
+            Weapon BattleAxe = new Weapon("BattleAxe", 250);
+            Weapon Mace = new Weapon("Mace", 350);
+            Weapon BoneCrusher = new Weapon("BoneCrusher", 500);
         }
         public static void PlayIntroduction()
         {
@@ -109,7 +118,8 @@ namespace RPGGame
         public static void Start()
         {
             bool gameStart = true;
-            SummonMonsters();
+            SpawnMonsters();
+            SpawnWeapons();
             PlayIntroduction();
             GetHeroName();
             ShowMainMenu();

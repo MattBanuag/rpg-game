@@ -11,6 +11,14 @@ namespace RPGGame
         #region Fields and Properties
         private string _name;
         private int _power;
-        #endregion  
+        #endregion
+
+        #region Constructor
+        public Weapon(string name, int power)
+        {
+            _name = name;
+            _power = power;
+        }
+        #endregion
     }
 }
