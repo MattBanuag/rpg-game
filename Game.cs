@@ -123,10 +123,10 @@ namespace RPGGame
                 }
             }
         }
-        public static void DisplayAvailableInventory()
+        public static void DisplayAvailableItems()
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nInventory? Smart choice. Preparation is a must!");
+            Console.WriteLine("\nSmart choice. Preparation is a must!");
             Console.WriteLine("\nAvailable weapons: ");
             Console.ForegroundColor = ConsoleColor.Green;
             foreach (Weapon w in Weapons)
@@ -185,8 +185,9 @@ namespace RPGGame
             Console.WriteLine("Adventure awaits!");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("1 - Stats");
-            Console.WriteLine("2 - Inventory");
-            Console.WriteLine("3 - Fight!");
+            Console.WriteLine("2 - Prepare");
+            Console.WriteLine("3 - Inventory");
+            Console.WriteLine("4 - Fight!");
             Console.ForegroundColor = ConsoleColor.White;
             Console.Write("\nWhat would you like to do? ");
             Console.ForegroundColor = ConsoleColor.Cyan;
@@ -215,9 +216,13 @@ namespace RPGGame
                     Console.WriteLine("Stats Selected");
                     break;
                 case "2":
-                    DisplayAvailableInventory();
+                    DisplayAvailableItems();
                     break;
                 case "3":
+                    _newHero.GetInventory();
+                    ShowMainMenu();
+                    break;
+                case "4":
                     Console.WriteLine("Fight Selected");
                     break;
             }

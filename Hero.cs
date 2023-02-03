@@ -17,7 +17,10 @@ namespace RPGGame
         private int originalHealth = 300;
         private int _currentHealth;
         private Weapon _equippedWeapon;
+        public Weapon EquippedWeapon { get { return _equippedWeapon; } }
+
         private Armour _equippedArmour;
+        public Armour EquippedArmour { get { return _equippedArmour; } }
         #endregion;
 
         #region Methods
@@ -41,6 +44,14 @@ namespace RPGGame
             }
 
             _formatHeroName(heroName);
+        }
+        public void GetInventory()
+        {
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"\n{Name}'s Inventory: ");
+            Console.WriteLine($"Weapon: {EquippedWeapon.Name} - {EquippedWeapon.Power} POWER");
+            Console.WriteLine($"Armour: {EquippedArmour.Name} - {EquippedArmour.Power} POWER\n");
+            Console.WriteLine("Feeling prepared? ");
         }
         public void EquipWeapon(Weapon weaponChoice)
         {
