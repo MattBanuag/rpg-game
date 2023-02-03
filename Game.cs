@@ -55,21 +55,37 @@ namespace RPGGame
             Console.Write("\nSo what'll it be? ");
             Console.ForegroundColor = ConsoleColor.Cyan;
 
-            int userChoice = 0;
-            bool isValid = int.TryParse(Console.ReadLine(), out userChoice);
-
+            string userChoice = Console.ReadLine();
+            bool isValid = false;
             while (!isValid)
             {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.Write("I apologize, but this option does not exist.");
-                Console.ResetColor();
-                Console.WriteLine("\nSo what'll it be? ");
-                userChoice = 0;
-                isValid = int.TryParse(Console.ReadLine(), out userChoice);
+                if(userChoice == "1" || userChoice == "2" || userChoice == "3")
+                {
+                    isValid = true;
+                } else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("I apologize, but this option does not exist.");
+                    Console.ResetColor();
+                    Console.Write("\nSo what'll it be? ");
+                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    userChoice = Console.ReadLine();
+                }
             }
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("\nOption selected was successful.");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            switch (userChoice)
+            {
+                case "1":
+                    Console.WriteLine("Stats Selected");
+                    break;
+                case "2":
+                    Console.WriteLine("Inventory Selected");
+                    break;
+                case "3":
+                    Console.WriteLine("Fight Selected");
+                    break;
+            }
         }
         public static void Start()
         {
