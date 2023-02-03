@@ -13,6 +13,7 @@ namespace RPGGame
         public static HashSet<Monster> Monsters = new HashSet<Monster>();   
         public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
         public static HashSet<Armour> Armours = new HashSet<Armour>();
+        private static Hero _newHero;
         #endregion
 
         #region Methods
@@ -58,7 +59,7 @@ namespace RPGGame
             Armours.Add(Steel);
             Armours.Add(Kevlar);
         }
-        public static Weapon GetHeroWeapon()
+        public static void GetHeroWeapon()
         {
             Weapon heroWeapon = null;
             bool isValid = false;
@@ -66,7 +67,7 @@ namespace RPGGame
             while (!isValid)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("\nWhat is your weapon of choice? ");
+                Console.Write("\nWhat is your Weapon of choice? ");
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 string weaponChoice = Console.ReadLine();
 
@@ -77,6 +78,7 @@ namespace RPGGame
                         heroWeapon = w;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"\nAh.... the {heroWeapon.Name}. A mighty fine choice.");
+                        _newHero.EquipWeapon(heroWeapon);
                         isValid = true;
                     }
                 }
@@ -84,14 +86,12 @@ namespace RPGGame
                 if (!isValid)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("I apologize but we do not have this kind of weapon.");
+                    Console.WriteLine("I apologize, but we do not have this kind of weapon.");
                     Console.ForegroundColor = ConsoleColor.White;
                 } 
             }
-
-            return heroWeapon;
         }
-        public static Armour GetHeroArmour()
+        public static void GetHeroArmour()
         {
             Armour heroArmour = null;
             bool isValid = false;
@@ -110,6 +110,7 @@ namespace RPGGame
                         heroArmour = a;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"\nAh.... {heroArmour.Name}. Another mighty fine choice.");
+                        _newHero.EquipArmour(heroArmour);
                         isValid = true;
                     }
                 }
@@ -117,12 +118,10 @@ namespace RPGGame
                 if (!isValid)
                 {
                     Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine("I apologize but we do not have this kind of armour.");
+                    Console.WriteLine("I apologize, but we do not have this kind of armour.");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
             }
-
-            return heroArmour;
         }
         public static void DisplayAvailableInventory()
         {
@@ -145,6 +144,7 @@ namespace RPGGame
 
             GetHeroWeapon();
             GetHeroArmour();
+            Console.WriteLine("\nFeeling prepared? ");
             ShowMainMenu();
         }
         public static void PlayIntroduction()
@@ -155,7 +155,7 @@ namespace RPGGame
         public static Hero GetHeroName()
         {
             bool isValid = false;
-            Hero newHero = null;
+            _newHero = null;
             while (!isValid)
             {
                 try
@@ -164,10 +164,10 @@ namespace RPGGame
                     Console.Write("Are you the promised hero they speak of? What do they call you? ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     string heroName = Console.ReadLine();
-                    newHero = new Hero(heroName);
+                    _newHero = new Hero(heroName);
 
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"\nI see.... Greetings {newHero.Name}!");
+                    Console.WriteLine($"\nI see.... Greetings {_newHero.Name}!");
                     isValid = true;
                 }
                 catch (Exception ex)
@@ -178,18 +178,17 @@ namespace RPGGame
                 }
             }
 
-            return newHero;
+            return _newHero;
         }
         public static void ShowMainMenu()
         {
-            Console.WriteLine("\nPrepare yourself for the fight ahead or explore around. It's up to you.");
-            Console.WriteLine("Select an option: ");
+            Console.WriteLine("Adventure awaits!");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("1 - Stats");
             Console.WriteLine("2 - Inventory");
             Console.WriteLine("3 - Fight!");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("\nSo what'll it be? ");
+            Console.Write("\nWhat would you like to do? ");
             Console.ForegroundColor = ConsoleColor.Cyan;
 
             string userChoice = Console.ReadLine();
@@ -204,7 +203,7 @@ namespace RPGGame
                     Console.ForegroundColor = ConsoleColor.DarkRed;
                     Console.WriteLine("I apologize, but this option does not exist.");
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("\nSo what'll it be? ");
+                    Console.Write("\nWhat would you like to do? ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     userChoice = Console.ReadLine();
                 }

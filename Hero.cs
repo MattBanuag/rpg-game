@@ -42,6 +42,14 @@ namespace RPGGame
 
             _formatHeroName(heroName);
         }
+        public void EquipWeapon(Weapon weaponChoice)
+        {
+            _equippedWeapon = weaponChoice;
+        }
+        public void EquipArmour(Armour armourChoice)
+        {
+            _equippedArmour = armourChoice;
+        }
         #endregion
 
         #region Constructor
