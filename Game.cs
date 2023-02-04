@@ -13,8 +13,8 @@ namespace RPGGame
         public static HashSet<Monster> Monsters = new HashSet<Monster>();   
         public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
         public static HashSet<Armour> Armours = new HashSet<Armour>();
-        private static Hero _newHero;
-        private static Monster _randomMonster;
+        public static Hero NewHero;
+        public static Monster RandomMonster;
         private static Random _random = new Random();
         #endregion
 
@@ -85,7 +85,7 @@ namespace RPGGame
                         heroWeapon = w;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"\nAh.... the {heroWeapon.Name}. A mighty fine choice.");
-                        _newHero.EquipWeapon(heroWeapon);
+                        NewHero.EquipWeapon(heroWeapon);
                         isValid = true;
                     }
                 }
@@ -117,7 +117,7 @@ namespace RPGGame
                         heroArmour = a;
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"\nOoooohhhhh.... {heroArmour.Name}. Another mighty fine choice.");
-                        _newHero.EquipArmour(heroArmour);
+                        NewHero.EquipArmour(heroArmour);
                         isValid = true;
                     }
                 }
@@ -132,7 +132,7 @@ namespace RPGGame
         }
         public static void SetFightScene()
         {
-            if (_newHero.EquippedWeapon == null || _newHero.EquippedArmour == null)
+            if (NewHero.EquippedWeapon == null || NewHero.EquippedArmour == null)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine("Woah! Hold your horses valiant hero. You have no weapon or armour in hand.");
@@ -142,20 +142,20 @@ namespace RPGGame
             } else
             {
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
-                Console.WriteLine($"\nI wish you the best of luck {_newHero.Name}...");
+                Console.WriteLine($"\nI wish you the best of luck {NewHero.Name}...");
                 Console.WriteLine($"May you strike down your foe mightily and true.");
 
                 int index = MonsterRandomizer();
-                _randomMonster = Monsters.ElementAt(index);
+                RandomMonster = Monsters.ElementAt(index);
 
                 Console.WriteLine("\n\"WALKING THROUGH THE DARK FOREST OF HAVENBORNE........\"");
-                Console.WriteLine($"\"{_randomMonster.Name} APPEARS!\"");
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine($"\n{_randomMonster.Name}'s Stats");
+                Console.WriteLine($"\"{RandomMonster.Name} APPEARS!\"");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine($"\n{RandomMonster.Name}'s Stats");
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Health = {_randomMonster.OriginalHealth}");
-                Console.WriteLine($"Strength = {_randomMonster.Strength}");
-                Console.WriteLine($"Defense = {_randomMonster.Defense}");
+                Console.WriteLine($"Health = {RandomMonster.OriginalHealth}");
+                Console.WriteLine($"Strength = {RandomMonster.Strength}");
+                Console.WriteLine($"Defense = {RandomMonster.Defense}");
                 
                 Console.WriteLine("\nOptions: ");
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -177,7 +177,7 @@ namespace RPGGame
                     else
                     {
                         Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine($"This option is not available. {_randomMonster.Name} smells your hesitation...");
+                        Console.WriteLine($"This option is not available. {RandomMonster.Name} smells your hesitation...");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.Write($"\n~ What shall you do? ");
                         Console.ForegroundColor = ConsoleColor.Cyan;
@@ -194,7 +194,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("\n\"YOU BARELY ESCAPED....\"");
                         Console.ForegroundColor = ConsoleColor.White;
-                        Console.WriteLine($"\nAhhh... So you have returned. Welcome back {_newHero.Name}");    
+                        Console.WriteLine($"\nAhhh... So you have returned. Welcome back {NewHero.Name}");    
                         ShowMainMenu();
                         break;
                 }
@@ -204,16 +204,7 @@ namespace RPGGame
         public static void FightMonster()
         {
             bool heroTurn = _random.Next(2) == 1;
-            bool isFighting = true;
-
-            if (heroTurn)
-            {
-                Console.WriteLine("Hero Turn");
-            } else
-            {
-                Console.WriteLine("Monster Turn");
-            }
-
+            Fight fightMonster = new Fight(heroTurn, NewHero, RandomMonster);
         }
         public static void DisplayAvailableItems()
         {
@@ -247,7 +238,7 @@ namespace RPGGame
         public static Hero GetHeroName()
         {
             bool isValid = false;
-            _newHero = null;
+            NewHero = null;
             while (!isValid)
             {
                 try
@@ -256,10 +247,10 @@ namespace RPGGame
                     Console.Write("Are you the promised hero they speak of? What do they call you? ");
                     Console.ForegroundColor = ConsoleColor.Cyan;
                     string heroName = Console.ReadLine();
-                    _newHero = new Hero(heroName);
+                    NewHero = new Hero(heroName);
 
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine($"\nI see.... Greetings {_newHero.Name}!");
+                    Console.WriteLine($"\nI see.... Greetings {NewHero.Name}!");
                     isValid = true;
                 }
                 catch (Exception ex)
@@ -270,7 +261,7 @@ namespace RPGGame
                 }
             }
 
-            return _newHero;
+            return NewHero;
         }
         public static void ShowMainMenu()
         {
@@ -311,7 +302,7 @@ namespace RPGGame
                     DisplayAvailableItems();
                     break;
                 case "3":
-                    _newHero.GetInventory();
+                    NewHero.GetInventory();
                     ShowMainMenu();
                     break;
                 case "4":

@@ -13,9 +13,15 @@ namespace RPGGame
         public string Name { get { return _name; } }
 
         private int _baseStrength = 30;
+        public int BaseStrength { get { return _baseStrength; } }
+
         private int _baseDefence = 30;
-        private int originalHealth = 300;
-        private int _currentHealth;
+        public int BaseDefence { get { return _baseDefence; } }
+
+        private int _originalHealth = 300;
+        public int OriginalHealth { get { return _originalHealth; } set { _originalHealth = value; } }
+
+        private int _currentHealth = 300;
         public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
 
         private Weapon? _equippedWeapon;

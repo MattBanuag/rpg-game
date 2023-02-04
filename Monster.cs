@@ -19,7 +19,7 @@ namespace RPGGame
         public int Defense { get { return _defense; } }
 
         private int _originalHealth;
-        public int OriginalHealth { get { return _originalHealth; } }
+        public int OriginalHealth { get { return _originalHealth; } set { _originalHealth = value; } }
 
         private int _currentHealth;
         public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
@@ -32,6 +32,7 @@ namespace RPGGame
             _strength = strength;
             _defense = defense;
             _originalHealth = originalHealth;
+            _currentHealth = originalHealth;
         }
         #endregion
     }
