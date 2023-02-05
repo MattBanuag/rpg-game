@@ -16,7 +16,7 @@ namespace RPGGame
         public int Strength { get { return _strength; } }
 
         private int _defense;
-        public int Defense { get { return _defense; } }
+        public int Defense { get { return _defense; } set { _defense = value; } }
 
         private int _originalHealth;
         public int OriginalHealth { get { return _originalHealth; } set { _originalHealth = value; } }

@@ -15,7 +15,7 @@ namespace RPGGame
 
         public string Code { get { return _code; } }
         public string Name { get { return _name; } }
-        public int Power { get { return _power; } }
+        public int Power { get { return _power; } set { _power = value; } }
         #endregion
 
         #region Constructor
