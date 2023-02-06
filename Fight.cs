@@ -50,6 +50,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _lose += 1;
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
@@ -57,6 +58,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _win += 1;
                         break;
                     }
 
@@ -89,6 +91,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _lose += 1;
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
@@ -96,6 +99,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _win += 1;
                         break;
                     }
                 }
@@ -132,6 +136,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _lose += 1;
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
@@ -139,6 +144,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _win += 1;
                         break;
                     }
 
@@ -170,6 +176,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _lose += 1;
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
@@ -177,6 +184,7 @@ namespace RPGGame
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
+                        _win += 1;
                         break;
                     }
                 }

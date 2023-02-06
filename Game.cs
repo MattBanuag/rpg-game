@@ -191,6 +191,8 @@ namespace RPGGame
                         FightMonster();
                         break;
                     case "2":
+                        index = MonsterRandomizer();
+                        RandomMonster = Monsters.ElementAt(index);
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("\n\"YOU BARELY ESCAPED....\"");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -296,7 +298,8 @@ namespace RPGGame
             switch (userChoice)
             {
                 case "1":
-                    Console.WriteLine("Stats Selected");
+                    NewHero.GetStats();
+                    ShowMainMenu();
                     break;
                 case "2":
                     DisplayAvailableItems();

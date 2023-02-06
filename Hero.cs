@@ -12,16 +12,16 @@ namespace RPGGame
         private string _name;
         public string Name { get { return _name; } }
 
-        private int _baseStrength = 30;
+        private int _baseStrength = 200;
         public int BaseStrength { get { return _baseStrength; } }
 
-        private int _baseDefence = 30;
+        private int _baseDefence = 500;
         public int BaseDefence { get { return _baseDefence; } }
 
-        private int _originalHealth = 300;
+        private int _originalHealth = 1000;
         public int OriginalHealth { get { return _originalHealth; } set { _originalHealth = value; } }
 
-        private int _currentHealth = 300;
+        private int _currentHealth = 1000;
         public int CurrentHealth { get { return _currentHealth; } set { _currentHealth = value; } }
 
         private Weapon? _equippedWeapon;
@@ -52,6 +52,16 @@ namespace RPGGame
             }
 
             _formatHeroName(heroName);
+        }
+        public void GetStats()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n{Name}'s Stats: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"Base Strength = {BaseStrength}");
+            Console.WriteLine($"Base Defence = {BaseDefence}");
+            Console.WriteLine($"Original Health = {OriginalHealth}");
+            Console.WriteLine($"Current Health = {CurrentHealth}\n");
         }
         public void GetInventory()
         {
