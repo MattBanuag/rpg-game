@@ -47,18 +47,24 @@ namespace RPGGame
                     // CHECKING IF HERO OR MONSTER HEALTH IS 0 OR LESS
                     if (hero.CurrentHealth <= 0)
                     {
+                        _lose += 1;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _lose += 1;
+                        Console.WriteLine($"\nCan you hear me?? Oh good..... one of our scouts saw you fall in battle...");
+                        Game.ShowMainMenu();
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
                     {
+                        _win += 1;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _win += 1;
+                        Console.WriteLine($"\nOur saviour has returned!!! The fall of {monster.Name} will be a story for the ages!!!");
+                        Console.Write("Monsters left: ");
+                        Game.Monsters.Remove(monster);
+                        Game.ShowMainMenu();
                         break;
                     }
 
@@ -88,18 +94,23 @@ namespace RPGGame
                     // CHECKING IF HERO OR MONSTER HEALTH IS 0 OR LESS
                     if (hero.CurrentHealth <= 0)
                     {
+                        _lose += 1;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _lose += 1;
+                        Console.WriteLine($"\nCan you hear me?? Oh good..... one of our scouts saw you fall in battle...");
+                        Game.ShowMainMenu();
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
                     {
+                        _win += 1;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _win += 1;
+                        Console.WriteLine($"\nOur saviour has returned!!! The fall of {monster.Name} will be a story for the ages!!!");
+                        Game.Monsters.Remove(monster);
+                        Game.ShowMainMenu();
                         break;
                     }
                 }
@@ -133,18 +144,23 @@ namespace RPGGame
                     // CHECKING IF HERO OR MONSTER HEALTH IS 0 OR LESS
                     if (hero.CurrentHealth <= 0)
                     {
+                        _lose += 1;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _lose += 1;
+                        Console.WriteLine($"\nCan you hear me?? Oh good..... one of our scouts saw you fall in battle...");
+                        Game.ShowMainMenu();
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
                     {
+                        _win += 1;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _win += 1;
+                        Console.WriteLine($"\nOur saviour has returned!!! The fall of {monster.Name} will be a story for the ages!!!");
+                        Game.Monsters.Remove(monster);
+                        Game.ShowMainMenu();
                         break;
                     }
 
@@ -173,18 +189,23 @@ namespace RPGGame
                     // CHECKING IF HERO OR MONSTER HEALTH IS 0 OR LESS
                     if (hero.CurrentHealth <= 0)
                     {
+                        _lose += 1;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _lose += 1;
+                        Console.WriteLine($"\nCan you hear me?? Oh good..... one of our scouts saw you fall in battle...");
+                        Game.ShowMainMenu();
                         break;
                     }
                     else if (monster.CurrentHealth <= 0)
                     {
+                        _win += 1;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
-                        _win += 1;
+                        Console.WriteLine($"\nOur saviour has returned!!! The fall of {monster.Name} will be a story for the ages!!!");
+                        Game.Monsters.Remove(monster);
+                        Game.ShowMainMenu();
                         break;
                     }
                 }

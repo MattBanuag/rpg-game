@@ -148,6 +148,12 @@ namespace RPGGame
                 int index = MonsterRandomizer();
                 RandomMonster = Monsters.ElementAt(index);
 
+                /*Console.Write("Monsters in Monsters: ");
+                foreach(Monster m in Monsters)
+                {
+                    Console.Write($"{m.Name} ");
+                }*/
+
                 Console.WriteLine("\n\"WALKING THROUGH THE DARK FOREST OF HAVENBORNE........\"");
                 Console.WriteLine($"\"{RandomMonster.Name} APPEARS!\"");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
