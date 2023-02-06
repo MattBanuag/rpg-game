@@ -10,9 +10,6 @@ namespace RPGGame
     public static class Game
     {
         #region Data Collections
-        public static int GamesPlayed = 0;
-        public static int Wins = 0;
-        public static int Losses = 0;
         public static HashSet<Monster> Monsters = new HashSet<Monster>();   
         public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
         public static HashSet<Armour> Armours = new HashSet<Armour>();
@@ -69,6 +66,16 @@ namespace RPGGame
             Armours.Add(Copper);
             Armours.Add(Steel);
             Armours.Add(Kevlar);
+        }
+        public static void RemoveMonster(Monster monster)
+        {
+            Monsters.Remove(monster);
+        }
+        public static void GetGameStats()
+        {
+            Console.WriteLine($"Games Played = {NewFight.GamesPlayed}");
+            Console.WriteLine($"Wins = {NewFight.Win}");
+            Console.WriteLine($"Losses = {NewFight.Lose}\n");
         }
         public static void GetHeroWeapon()
         {
