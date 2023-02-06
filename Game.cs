@@ -71,6 +71,26 @@ namespace RPGGame
         {
             Monsters.Remove(monster);
         }
+        public static void CheckHeroHealth()
+        {
+            bool hasHealth = true;
+            while (hasHealth)
+            {
+                if(NewHero.CurrentHealth <= 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine($"\nI apologize, but you have {NewHero.CurrentHealth}HP left.");
+                    Console.WriteLine("I recommend healing up before going on adventures.\n");
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Head to \"Prepare\" and pick up some potions.");
+                    ShowMainMenu();
+                    hasHealth = false;
+                } else
+                {
+                    SetFightScene();
+                }
+            }
+        }
         public static void GetGameStats()
         {
             Console.WriteLine($"Games Played = {NewFight.GamesPlayed}");
@@ -320,7 +340,7 @@ namespace RPGGame
                     ShowMainMenu();
                     break;
                 case "4":
-                    SetFightScene();
+                    CheckHeroHealth();
                     break;
             }
         }
