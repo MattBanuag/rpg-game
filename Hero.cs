@@ -61,7 +61,11 @@ namespace RPGGame
             Console.WriteLine($"Base Strength = {BaseStrength}");
             Console.WriteLine($"Base Defence = {BaseDefence}");
             Console.WriteLine($"Original Health = {OriginalHealth}");
-            Console.WriteLine($"Current Health = {CurrentHealth}\n");
+            Console.WriteLine($"Current Health = {CurrentHealth}");
+            Console.WriteLine($"Games Played = {Game.GamesPlayed}");
+            Console.WriteLine($"Wins = {Game.Wins}");
+            Console.WriteLine($"Losses = {Game.Losses}\n");
+
         }
         public void GetInventory()
         {

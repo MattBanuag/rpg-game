@@ -10,9 +10,13 @@ namespace RPGGame
     public static class Game
     {
         #region Data Collections
+        public static int GamesPlayed = 0;
+        public static int Wins = 0;
+        public static int Losses = 0;
         public static HashSet<Monster> Monsters = new HashSet<Monster>();   
         public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
         public static HashSet<Armour> Armours = new HashSet<Armour>();
+        public static Fight NewFight = new Fight();
         public static Hero NewHero;
         public static Monster RandomMonster;
         private static Random _random = new Random();
@@ -148,12 +152,6 @@ namespace RPGGame
                 int index = MonsterRandomizer();
                 RandomMonster = Monsters.ElementAt(index);
 
-                /*Console.Write("Monsters in Monsters: ");
-                foreach(Monster m in Monsters)
-                {
-                    Console.Write($"{m.Name} ");
-                }*/
-
                 Console.WriteLine("\n\"WALKING THROUGH THE DARK FOREST OF HAVENBORNE........\"");
                 Console.WriteLine($"\"{RandomMonster.Name} APPEARS!\"");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -212,7 +210,7 @@ namespace RPGGame
         public static void FightMonster()
         {
             bool heroTurn = _random.Next(2) == 1;
-            Fight fightMonster = new Fight(heroTurn, NewHero, RandomMonster);
+            NewFight.StartFight(heroTurn, NewHero, RandomMonster);
         }
         public static void DisplayAvailableItems()
         {

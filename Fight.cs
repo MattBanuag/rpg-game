@@ -13,11 +13,14 @@ namespace RPGGame
         private int _monsterTurn;
         private int _win;
         private int _lose;
+        private int _gamesPlayed;
         #endregion
 
-        #region Constructor
-        public Fight(bool heroTurn, Hero hero, Monster monster)
+        #region Method
+        public void StartFight(bool heroTurn, Hero hero, Monster monster)
         {
+            _gamesPlayed += 1;
+            Game.GamesPlayed = _gamesPlayed;
             if (heroTurn)
             {
                 while (monster.CurrentHealth > 0 || hero.CurrentHealth > 0)
@@ -48,6 +51,7 @@ namespace RPGGame
                     if (hero.CurrentHealth <= 0)
                     {
                         _lose += 1;
+                        Game.Losses = _lose;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -58,11 +62,11 @@ namespace RPGGame
                     else if (monster.CurrentHealth <= 0)
                     {
                         _win += 1;
+                        Game.Wins = _win;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine($"\nOur saviour has returned!!! The fall of {monster.Name} will be a story for the ages!!!");
-                        Console.Write("Monsters left: ");
                         Game.Monsters.Remove(monster);
                         Game.ShowMainMenu();
                         break;
@@ -70,7 +74,7 @@ namespace RPGGame
 
                     // MONSTER ATTACKS
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
-                    _monsterTurn =  monster.Strength - hero.EquippedArmour.Power;
+                    _monsterTurn = monster.Strength - hero.EquippedArmour.Power;
 
                     // IF DAMAGE IS 0 OR LESS, NOTHING WILL HAPPEN
                     if (_monsterTurn <= 0)
@@ -95,6 +99,7 @@ namespace RPGGame
                     if (hero.CurrentHealth <= 0)
                     {
                         _lose += 1;
+                        Game.Losses = _lose;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -105,6 +110,7 @@ namespace RPGGame
                     else if (monster.CurrentHealth <= 0)
                     {
                         _win += 1;
+                        Game.Wins = _win;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -124,14 +130,15 @@ namespace RPGGame
                     _monsterTurn = monster.Strength - hero.EquippedArmour.Power;
 
                     // IF DAMAGE IS 0 OR LESS, NOTHING WILL HAPPEN
-                    if(_monsterTurn <= 0) 
+                    if (_monsterTurn <= 0)
                     {
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine($"\n{monster.Name} Attacks.... but {hero.Name}'s armour prevents the damage!");
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"{hero.Name} = {hero.CurrentHealth} HP");
                         hero.EquippedArmour.Power = hero.EquippedArmour.Power - monster.Strength;
-                    } else
+                    }
+                    else
                     {
                         hero.CurrentHealth = hero.CurrentHealth - _monsterTurn;
                         Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -145,6 +152,7 @@ namespace RPGGame
                     if (hero.CurrentHealth <= 0)
                     {
                         _lose += 1;
+                        Game.Losses = _lose;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -155,6 +163,7 @@ namespace RPGGame
                     else if (monster.CurrentHealth <= 0)
                     {
                         _win += 1;
+                        Game.Wins = _win;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -190,6 +199,7 @@ namespace RPGGame
                     if (hero.CurrentHealth <= 0)
                     {
                         _lose += 1;
+                        Game.Losses = _lose;
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nYou Died.....");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -200,6 +210,7 @@ namespace RPGGame
                     else if (monster.CurrentHealth <= 0)
                     {
                         _win += 1;
+                        Game.Wins = _win;
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\n{monster.Name} has died.");
                         Console.ForegroundColor = ConsoleColor.White;
@@ -210,6 +221,13 @@ namespace RPGGame
                     }
                 }
             }
+        }
+        #endregion
+
+        #region Constructor
+        public Fight()
+        {
+            
         }
         #endregion
     }
