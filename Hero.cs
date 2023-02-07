@@ -14,7 +14,7 @@ namespace RPGGame
         public string Name { get { return _name; } }
 
         private int _baseStrength = 200;
-        public int BaseStrength { get { return _baseStrength; } set { _baseDefence = value; } }
+        public int BaseStrength { get { return _baseStrength; } set { _baseStrength = value; } }
 
         private int _baseDefence = 500;
         public int BaseDefence { get { return _baseDefence; } set { _baseDefence = value; } }
