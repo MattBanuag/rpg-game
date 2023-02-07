@@ -28,7 +28,7 @@ namespace RPGGame
             Monster Orc = new Monster("Rourke the Orc", 200, 160, 200);
             Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 300, 60);
             Monster Serpent = new Monster("Clement the Serpent", 400, 400, 80);
-            Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 1000);
+            Monster Dragon = new Monster("Sargon the Dragon", 800, 500, 1000);
 
             Monsters.Add(Goblin);
             Monsters.Add(Orc);
