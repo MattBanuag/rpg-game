@@ -24,11 +24,11 @@ namespace RPGGame
         #region Methods
         public static void SpawnMonsters()
         {
-            Monster Goblin = new Monster("Robin the Goblin", 100, 80, 20);
-            Monster Orc = new Monster("Rourke the Orc", 200, 160, 40);
-            Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 240, 60);
-            Monster Serpent = new Monster("Clement the Serpent", 400, 320, 80);
-            Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 150);
+            Monster Goblin = new Monster("Robin the Goblin", 100, 80, 100);
+            Monster Orc = new Monster("Rourke the Orc", 200, 160, 200);
+            Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 300, 60);
+            Monster Serpent = new Monster("Clement the Serpent", 400, 400, 80);
+            Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 1000);
 
             Monsters.Add(Goblin);
             Monsters.Add(Orc);
@@ -408,7 +408,6 @@ namespace RPGGame
         }
         public static void Start()
         {
-            bool gameStart = true;
             SpawnMonsters();
             SpawnWeapons();
             SpawnArmour();
