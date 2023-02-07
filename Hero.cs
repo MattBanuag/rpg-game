@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPFundamentalsFinalProject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,10 @@ namespace RPGGame
         public string Name { get { return _name; } }
 
         private int _baseStrength = 200;
-        public int BaseStrength { get { return _baseStrength; } }
+        public int BaseStrength { get { return _baseStrength; } set { _baseDefence = value; } }
 
         private int _baseDefence = 500;
-        public int BaseDefence { get { return _baseDefence; } }
+        public int BaseDefence { get { return _baseDefence; } set { _baseDefence = value; } }
 
         private int _originalHealth = 1000;
         public int OriginalHealth { get { return _originalHealth; } set { _originalHealth = value; } }
@@ -29,6 +30,9 @@ namespace RPGGame
 
         private Armour? _equippedArmour;
         public Armour? EquippedArmour { get { return _equippedArmour; } }
+
+        private Potion? _equippedPotion;
+        public Potion? EquippedPotion { get { return _equippedPotion; } }
         #endregion;
 
         #region Methods
@@ -78,7 +82,8 @@ namespace RPGGame
                 Console.WriteLine($"\n{Name}'s Inventory: ");
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine($"Weapon: {EquippedWeapon.Name} - {EquippedWeapon.Power} POWER");
-                Console.WriteLine($"Armour: {EquippedArmour.Name} - {EquippedArmour.Power} POWER\n");
+                Console.WriteLine($"Armour: {EquippedArmour.Name} - {EquippedArmour.Power} POWER");
+                Console.WriteLine($"Potion: {EquippedPotion.Name} - {EquippedPotion.Description}\n");
                 Console.WriteLine("Feeling prepared? ");
             }
         }
@@ -89,6 +94,23 @@ namespace RPGGame
         public void EquipArmour(Armour armourChoice)
         {
             _equippedArmour = armourChoice;
+        }
+        public void EquipPotion(Potion potionChoice)
+        {
+            _equippedPotion = potionChoice;
+
+            switch (potionChoice.Code)
+            {
+                case "1":
+                    BaseDefence = BaseDefence + potionChoice.BoostValue;
+                    break;
+                case "2":
+                    BaseStrength = BaseStrength + potionChoice.BoostValue;
+                    break;
+                case "3":
+                    CurrentHealth = 1000;
+                    break;
+            }
         }
         #endregion
 

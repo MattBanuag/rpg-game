@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPFundamentalsFinalProject;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace RPGGame
         public static HashSet<Monster> Monsters = new HashSet<Monster>();   
         public static HashSet<Weapon> Weapons = new HashSet<Weapon>();  
         public static HashSet<Armour> Armours = new HashSet<Armour>();
+        public static HashSet<Potion> Potions = new HashSet<Potion>();
         public static Fight NewFight = new Fight();
         public static Hero NewHero;
         public static Monster RandomMonster;
@@ -22,11 +24,11 @@ namespace RPGGame
         #region Methods
         public static void SpawnMonsters()
         {
-            Monster Goblin = new Monster("Robin the Goblin", 100, 80, 200);
-            Monster Orc = new Monster("Rourke the Orc", 200, 160, 400);
-            Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 240, 600);
-            Monster Serpent = new Monster("Clement the Serpent", 400, 320, 800);
-            Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 1500);
+            Monster Goblin = new Monster("Robin the Goblin", 100, 80, 20);
+            Monster Orc = new Monster("Rourke the Orc", 200, 160, 40);
+            Monster Gargoyle = new Monster("Droil the Gargoyle", 300, 240, 60);
+            Monster Serpent = new Monster("Clement the Serpent", 400, 320, 80);
+            Monster Dragon = new Monster("Sargon the Dragon", 2000, 500, 150);
 
             Monsters.Add(Goblin);
             Monsters.Add(Orc);
@@ -66,6 +68,16 @@ namespace RPGGame
             Armours.Add(Copper);
             Armours.Add(Steel);
             Armours.Add(Kevlar);
+        }
+        public static void SpawnPotion()
+        {
+            Potion DefensePotion = new Potion("1", "Defense Booster", "Boosts base defence by 400.", 400);
+            Potion StrengthPotion = new Potion("2", "Strength Booster", "Boosts base strength by 300.", 300);
+            Potion RevivePotion = new Potion("3", "Revive", "Revives hero at full health", 1000);
+
+            Potions.Add(DefensePotion);
+            Potions.Add(StrengthPotion);
+            Potions.Add(RevivePotion);
         }
         public static void RemoveMonster(Monster monster)
         {
@@ -161,8 +173,49 @@ namespace RPGGame
                 }
             }
         }
+        public static void GetHeroPotion()
+        {
+            Potion heroPotion = null;
+            bool isValid = false;
+
+            while (!isValid)
+            {
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write("\n~ What is your Potion of choice? ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                string potionChoice = Console.ReadLine();
+
+                foreach (Potion p in Potions)
+                {
+                    if (p.Code == potionChoice)
+                    {
+                        heroPotion = p;
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine($"\nGreat choice.... {heroPotion.Name}. This will be of great use.");
+                        NewHero.EquipPotion(heroPotion);
+                        isValid = true;
+                    }
+                }
+
+                if (!isValid)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("I apologize, but we do not have this kind of potion.");
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
+            }
+        }
         public static void SetFightScene()
         {
+            if (Monsters.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\nALL MONSTERS HAVE BEEN SLAYED!!! THANK YOU {NewHero.Name}, YOU HAVE SAVED HAVENBORNE!!!");
+                Console.WriteLine($"THE END.....");
+                Console.ForegroundColor = ConsoleColor.White;
+                Environment.Exit(0);
+            }
+
             if (NewHero.EquippedWeapon == null || NewHero.EquippedArmour == null)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -258,8 +311,17 @@ namespace RPGGame
                 Console.WriteLine($"{a.Code} - {a.Name} : {a.Power} Power");
             }
 
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("\nAvailable potions: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            foreach (Potion p in Potions)
+            {
+                Console.WriteLine($"{p.Code} - {p.Name} : {p.Description}");
+            }
+
             GetHeroWeapon();
             GetHeroArmour();
+            GetHeroPotion();
             Console.WriteLine("\nFeeling prepared? ");
             ShowMainMenu();
         }
@@ -350,6 +412,7 @@ namespace RPGGame
             SpawnMonsters();
             SpawnWeapons();
             SpawnArmour();
+            SpawnPotion();
             PlayIntroduction();
             GetHeroName();
             ShowMainMenu();
